@@ -50,7 +50,8 @@ Follow these instructions once the container is [running](#tss-is-running).
 
 ### To compile and run executable:
 
-3. To build the TSS Server run the `build.bat` file.
+3. To build the TSS Server, run...\
+This will require the C compiler gcc.
 ```
 ./build.bat
 ```
