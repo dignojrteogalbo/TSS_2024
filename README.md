@@ -19,13 +19,38 @@
 <br>
 
 ## :earth_americas: Run TSS Server
+
 1. Clone the repository...
 ```
 git clone https://github.com/SUITS-Techteam/TSS_2024.git
 ```
 2. Navigate into the root of the repository
-7. To build the TSS Server, run...\
-This will require the C compiler gcc.
+```
+cd TSS_2024
+```
+
+### To use Docker container:
+
+This will require [Docker](https://www.docker.com/get-started/) to be installed and running.
+
+3. To build the Docker image execute with `Dockerfile`.
+   This creates an image with the `tss_2024` tag.
+```
+docker build -t tss_2024 .
+```
+
+4. To run the container.
+   This creates a container named `tss_2024` from the image we created.
+   The container runs in interactive mode with the port `14141` exposed.
+```
+docker run -it -p 14141:14141 --name tss_2024 tss_2024
+```
+
+Follow these instructions once the container is [running](#tss-is-running).
+
+### To compile and run executable:
+
+3. To build the TSS Server run the `build.bat` file.
 ```
 ./build.bat
 ```
@@ -34,6 +59,8 @@ This will require the C compiler gcc.
 ```
 ./server.exe
 ```
+
+### TSS is running:
 You should see the following lines appear...
 ```
 Hello World
@@ -44,6 +71,8 @@ Creating Socket...
 Binding Socket...
 Listening...
 ```
+
+### TSS usage:
 To run the server on local host (which might be useful if using WSL) run the following command
 ```
 ./server.exe --local
@@ -59,16 +88,24 @@ Binding Socket...
 Listening...
 ```
 
+To gracefully shutdown the server, press the `ENTER` button in the prompt.
+
+If using Docker, you must start your container in interactive mode.
+```
+docker start -i tss_2024
+```
+
+---
+
 5. Type the IP address printed by the server into a web browser (Replace with your IP)\
 Make sure you are on the same network as the server when connecting to it.
 ```
-http://192.168.51.109:14141
+http://<SERVER IP ADDRESS>:14141
 ```
 6. From this website, you can interact with the TSS.\
 This is where you can monitor the state of the server, verify the display of your system, and virtually interact with the EVA devices like you will be doing in May.
 
 ![Image](Images/TSSMainPage.png)
-
 
 
 ## TSS EVA Devices
@@ -131,5 +168,6 @@ This is where you can monitor the state of the server, verify the display of you
 * Network.c: contains helper functions for the server to communicate with other devices.
 * Server_data.c: contains the data that the server maintains and how that data is updated.
 * public folder: contains a frontend for testing your device with TSS, along with all the json files that you will need from the server.
+* Dockerfile: contains commands needed to create a Docker image for the TSS.
 
 This server is based on "Network Programming in C" and builds off of the HTTPs example.

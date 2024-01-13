@@ -10,4 +10,8 @@ RUN chmod +x ./build.bat && ./build.bat
 
 EXPOSE 14141
 
-ENTRYPOINT ./server.exe --local
+# to run the file compiled from build.dat
+ENTRYPOINT ./server.exe
+
+# to run with --local
+# ENTRYPOINT ./server.exe --local
