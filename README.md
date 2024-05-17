@@ -22,7 +22,7 @@
 
 1. Clone the repository...
 ```
-git clone https://github.com/SUITS-Techteam/TSS_2024.git
+git clone -b docker https://github.com/dignojrteogalbo/TSS_2024.git
 ```
 2. Navigate into the root of the repository
 ```
